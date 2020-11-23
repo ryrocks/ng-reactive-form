@@ -1,0 +1,49 @@
+<h3>Display Rules</h3>
+<hr>
+<main class="display-rules__main">
+    <!-- Components here -->
+    <form class="display-rules__form" [formGroup]="inclusionRules">
+        <h4>Inclusion Rules</h4>
+        <span class="display-rules__form__description">Where would you like to display your campagin?</span>
+        <div class="display-rules__form__fields">
+            <select>
+                <option value="all">All Pages</option>
+                <option value="home">Home Page</option>
+                <option value="product-pages">Product Pages</option>
+                <option value="password-pages">Password Page</option>
+                <option value="custom">Custom</option>
+            </select>
+            <select>
+                <option value="contains">Contains</option>
+                <option value="exact">Exact match</option>
+            </select>
+            <input type="text" />
+            <button class="display-rules__btn__delete">X</button>
+        </div>
+        <div>
+            <button class="display-rules__btn__add">+ NEW RULE</button>
+        </div>
+    </form>
+    <form [formGroup]="exclusionRules">
+        <h4>Exclusion Rules</h4>
+        <span class="display-rules__form__description">Where would you like to NOT display your campagin?</span>
+        <div class="display-rules__form__fields">
+            <select>
+                <option value="all">All Pages</option>
+                <option value="home">Home Page</option>
+                <option value="product-pages">Product Pages</option>
+                <option value="password-pages">Password Page</option>
+                <option value="custom">Custom</option>
+            </select>
+            <select>
+                <option value="contains">Contains</option>
+                <option value="exact">Exact match</option>
+            </select>
+            <input type="text" />
+            <button class="display-rules__btn__delete">X</button>
+        </div>
+        <div>
+            <button class="display-rules__btn__add">+ NEW RULE</button>
+        </div>
+    </form>
+</main>
