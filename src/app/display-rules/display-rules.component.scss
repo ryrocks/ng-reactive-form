@@ -14,6 +14,11 @@ input {
   padding: 5px;
   margin-right: 1.5rem;
   min-width: 200px;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
 button {
@@ -41,6 +46,10 @@ hr {
     &__fields {
       display: flex;
       align-items: baseline;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+      }
     }
 
     &__fields:last-child {
