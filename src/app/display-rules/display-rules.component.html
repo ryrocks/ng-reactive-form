@@ -5,47 +5,61 @@
     <form class="display-rules__form" [formGroup]="inclusionRulesForm">
         <h4>Inclusion Rules</h4>
         <span class="display-rules__form__description">Where would you like to display your campagin?</span>
-        <div *ngFor="let rule of rules.controls; let i = index">
+        <div *ngFor="let rule of inclusionRules.controls; let i = index">
             <div [formGroup]="rule" class="display-rules__form__fields">
                 <select formControlName="targetPages">
-                    <option [value]="all">All Pages</option>
-                    <option [value]="home">Home Page</option>
-                    <option [value]="product-pages">Product Pages</option>
-                    <option [value]="password-pages">Password Page</option>
-                    <option [value]="custom">Custom</option>
+                    <option *ngFor="let page of pages" [value]="page.value">{{page.name}}</option>
                 </select>
-                <select formControlName="isExactMatch">
+                <select [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
+                    formControlName="isExactMatch">
                     <option [value]="false">Contains</option>
                     <option [value]="true">Exact match</option>
                 </select>
-                <input formControlName="url" type="text" />
-                <button class="display-rules__btn__delete" (click)="removeInclusionRule(i)">X</button>
+                <div [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
+                    class="display-rules__form__input-wrapper">
+                    <input formControlName="url" type="text" />
+                    <div *ngIf="rule.controls['url'].touched && rule.controls['url'].errors"
+                        class="display-rules__form__input-error">URL is Missing
+                    </div>
+                </div>
+                <button class="display-rules__btn__delete" (click)="removeRule(inclusionRules, i)">X</button>
+            </div>
+            <div *ngIf="inclusionRules.controls.length !== 1 && i !== inclusionRules.controls.length - 1"
+                class="display-rules__OR">OR
             </div>
         </div>
         <div>
-            <button class="display-rules__btn__add" (click)="addInclusionRule()">+ NEW RULE</button>
+            <button class="display-rules__btn__add" (click)="addRule('inclusion')">+ NEW RULE</button>
         </div>
     </form>
-    <!-- <form [formGroup]="exclusionRulesForm">
+    <form class="display-rules__form" [formGroup]="exclusionRulesForm">
         <h4>Exclusion Rules</h4>
         <span class="display-rules__form__description">Where would you like to NOT display your campagin?</span>
-        <div class="display-rules__form__fields">
-            <select>
-                <option value="all">All Pages</option>
-                <option value="home">Home Page</option>
-                <option value="product-pages">Product Pages</option>
-                <option value="password-pages">Password Page</option>
-                <option value="custom">Custom</option>
-            </select>
-            <select>
-                <option value="contains">Contains</option>
-                <option value="exact">Exact match</option>
-            </select>
-            <input type="text" />
-            <button class="display-rules__btn__delete">X</button>
+        <div *ngFor="let rule of exclusionRules.controls; let i = index">
+            <div [formGroup]="rule" class="display-rules__form__fields">
+                <select formControlName="targetPages">
+                    <option *ngFor="let page of pages" [value]="page.value">{{page.name}}</option>
+                </select>
+                <select [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
+                    formControlName="isExactMatch">
+                    <option [value]="false">Contains</option>
+                    <option [value]="true">Exact match</option>
+                </select>
+                <div [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
+                    class="display-rules__form__input-wrapper">
+                    <input formControlName="url" type="text" />
+                    <div *ngIf="rule.controls['url'].touched && rule.controls['url'].errors"
+                        class="display-rules__form__input-error">URL is Missing
+                    </div>
+                </div>
+                <button class="display-rules__btn__delete" (click)="removeRule(exclusionRules, i)">X</button>
+            </div>
+            <div *ngIf="exclusionRules.controls.length !== 1 && i !== exclusionRules.controls.length - 1"
+                class="display-rules__OR">OR
+            </div>
         </div>
         <div>
-            <button class="display-rules__btn__add">+ NEW RULE</button>
+            <button class="display-rules__btn__add" (click)="addRule('exclusion')">+ NEW RULE</button>
         </div>
-    </form> -->
+    </form>
 </main>

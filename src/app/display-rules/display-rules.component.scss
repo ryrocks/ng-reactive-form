@@ -13,11 +13,16 @@ select,
 input {
   padding: 5px;
   margin-right: 1.5rem;
+  min-width: 200px;
 }
 
 button {
   background: transparent;
   border: 1px solid;
+}
+
+hr {
+  margin-bottom: 1rem;
 }
 
 .display-rules {
@@ -30,11 +35,36 @@ button {
       font-size: 14px;
       margin: 12px 0;
       display: inline-block;
+      color: #666666;
     }
 
     &__fields {
+      display: flex;
+      align-items: baseline;
+    }
+
+    &__fields:last-child {
       margin-bottom: 1rem;
     }
+
+    &__input-wrapper {
+      display: inline-block;
+    }
+
+    &__input-error {
+      color: #721c24;
+      background: #f5c6cb;
+      border: 1px solid #f5c6cb;
+      padding: 5px 1rem;
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__OR {
+    margin: 0.5rem 0;
+    padding-left: 2rem;
+    color: #cccccc;
+    font-size: 12px;
   }
 
   &__btn {
@@ -51,6 +81,11 @@ button {
       line-height: 10px;
       padding: 0;
       cursor: pointer;
+
+      &:hover {
+        border-color: #f5c6cb;
+        color: #f5c6cb;
+      }
     }
   }
 }
