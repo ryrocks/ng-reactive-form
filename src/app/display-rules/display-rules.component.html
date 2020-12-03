@@ -3,23 +3,29 @@
 <main class="display-rules__main">
     <!-- Components here -->
     <form class="display-rules__form" [formGroup]="inclusionRulesForm">
-        <h4>Inclusion Rules</h4>
+        <h4 class="display-rules__form__title">Inclusion Rules</h4>
         <span class="display-rules__form__description">Where would you like to display your campagin?</span>
         <div *ngFor="let rule of inclusionRules.controls; let i = index">
-            <div [formGroup]="rule" class="display-rules__form__fields">
-                <select formControlName="targetPages">
-                    <option *ngFor="let page of pages" [value]="page.value">{{page.name}}</option>
-                </select>
-                <select [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
-                    formControlName="isExactMatch">
-                    <option [value]="false">Contains</option>
-                    <option [value]="true">Exact match</option>
-                </select>
-                <div [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
-                    class="display-rules__form__input-wrapper">
-                    <input formControlName="url" type="text" />
-                    <div *ngIf="rule.controls['url'].touched && rule.controls['url'].errors"
-                        class="display-rules__form__input-error">URL is Missing
+            <div class="display-rules__form__input-fields-wrapper">
+                <div [formGroup]="rule" class="display-rules__form__input-fields">
+                    <div class="display-rules__form__input-field">
+                        <select formControlName="targetPages">
+                            <option *ngFor="let page of pages" [value]="page.value">{{page.name}}</option>
+                        </select>
+                    </div>
+                    <div class="display-rules__form__input-field"
+                        [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'">
+                        <select formControlName="isExactMatch">
+                            <option [value]="false">Contains</option>
+                            <option [value]="true">Exact match</option>
+                        </select>
+                    </div>
+                    <div class="display-rules__form__input-field"
+                        [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'">
+                        <input formControlName="url" type="text" />
+                        <div *ngIf="rule.controls['url'].touched && rule.controls['url'].errors"
+                            class="display-rules__form__input-error">URL is Missing
+                        </div>
                     </div>
                 </div>
                 <button class="display-rules__btn__delete" (click)="removeRule(inclusionRules, i)">X</button>
@@ -33,20 +39,24 @@
         </div>
     </form>
     <form class="display-rules__form" [formGroup]="exclusionRulesForm">
-        <h4>Exclusion Rules</h4>
+        <h4 class="display-rules__form__title">Exclusion Rules</h4>
         <span class="display-rules__form__description">Where would you like to NOT display your campagin?</span>
         <div *ngFor="let rule of exclusionRules.controls; let i = index">
-            <div [formGroup]="rule" class="display-rules__form__fields">
-                <select formControlName="targetPages">
-                    <option *ngFor="let page of pages" [value]="page.value">{{page.name}}</option>
-                </select>
-                <select [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
-                    formControlName="isExactMatch">
-                    <option [value]="false">Contains</option>
-                    <option [value]="true">Exact match</option>
-                </select>
-                <div [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'"
-                    class="display-rules__form__input-wrapper">
+            <div [formGroup]="rule" class="display-rules__form__input-fields">
+                <div class="display-rules__form__input-field">
+                    <select formControlName="targetPages">
+                        <option *ngFor="let page of pages" [value]="page.value">{{page.name}}</option>
+                    </select>
+                </div>
+                <div class="display-rules__form__input-field"
+                    [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'">
+                    <select formControlName="isExactMatch">
+                        <option [value]="false">Contains</option>
+                        <option [value]="true">Exact match</option>
+                    </select>
+                </div>
+                <div class="display-rules__form__input-field"
+                    [@animationFields]="showCustomRelatedFields(rule) ? 'show' : 'hide'">
                     <input formControlName="url" type="text" />
                     <div *ngIf="rule.controls['url'].touched && rule.controls['url'].errors"
                         class="display-rules__form__input-error">URL is Missing

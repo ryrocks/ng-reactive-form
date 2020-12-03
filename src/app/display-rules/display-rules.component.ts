@@ -11,7 +11,7 @@ type PAGES = {
   selector: 'app-display-rules',
   templateUrl: './display-rules.component.html',
   styleUrls: ['./display-rules.component.scss'],
-  encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.Emulated,
   animations: [
     trigger('animationFields', [
       state('hide', style({

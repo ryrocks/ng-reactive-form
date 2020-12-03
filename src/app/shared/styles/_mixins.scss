@@ -1,0 +1,48 @@
+@import "variables";
+
+@mixin field {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 6px;
+  width: 100%;
+  border: 1px solid $color-grey;
+
+  @media screen and (min-width: $screen-md) {
+    width: 180px;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    width: 200px;
+  }
+}
+
+@mixin divider {
+  margin-bottom: 1rem;
+  height: 1px;
+  color: #f3f3f3;
+  background-color: #f3f3f3;
+  border: none;
+}
+
+@mixin flex($direction: row) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: $direction;
+  flex-direction: $direction;
+}
+
+@mixin font($fontSize: 16px, $fontWeight: normal) {
+  font-style: normal;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  line-height: normal;
+}

@@ -1,4 +1,26 @@
+@import "shared/styles/variables";
+
+@mixin container-width($xl, $lg, $md, $sm) {
+  @media screen and (min-width: $screen-sm) {
+    max-width: $sm;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    max-width: $md;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    max-width: $lg;
+  }
+
+  @media screen and (min-width: $screen-xl) {
+    max-width: $xl;
+  }
+}
+
 .container {
-  max-width: 1440px;
+  max-width: 100%;
   margin: 0 auto;
+
+  @include container-width(1140px, 960px, 720px, 540px);
 }
